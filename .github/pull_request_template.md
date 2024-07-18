@@ -1,13 +1,12 @@
 ## Overview of Changes
 
-General overview of what has been changed
+General overview of what has been changed Example:
 ```
-Modified IPTables documentation to removed errors, typos and add missing content. The added content is as follows: Docker Integration, Debugging Guidelines, and Useful commands.
+"Modified IPTables documentation to remove errors, typos and add missing content. The added content is as follows: Docker Integration, Debugging Guidelines, and Useful commands."
 ```
-
 ## Reason for Modification
 
-This section will list the reasons modification were preformed. This justifies why the changes are necessary or the documentation should be added.
+This section will list the reasons modifications were performed. This justifies why the changes are necessary or the documentation should be added.
 
 ## Verification
 
