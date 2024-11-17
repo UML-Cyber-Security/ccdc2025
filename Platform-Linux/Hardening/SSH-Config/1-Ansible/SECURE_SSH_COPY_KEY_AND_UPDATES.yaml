@@ -9,6 +9,10 @@
 # - this script's credit is given to Alex, was copied over to this repo(CCDC2025) by Chisom
 
 
+# Note: There is a cleaner, more streamlined version, that I've(chisom) uploaed to this repo(CCDC_2024)
+#Located here "Platform-Linux/Hardening/SSH-Config/1-Ansible/copy-ssh-key-enforce-pubkey.yaml"
+# This is a good refernce to cross check against likely malacilously modified ssh config files.
+
 ---
 - name: Copy SSH keys and configure sshd_config
   hosts: all
@@ -37,10 +41,10 @@
   tasks:
     - name: Copy SSH public key
       authorized_key:
-        user: "alex"
+        user: "blueteam" #Change the user to the machines base account
         key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
         state: present
-
+      # Useful for fullying removing the ssh_config and starting anew.
     - name: Remove all lines from sshd_config
       lineinfile:
         path: /etc/ssh/sshd_config

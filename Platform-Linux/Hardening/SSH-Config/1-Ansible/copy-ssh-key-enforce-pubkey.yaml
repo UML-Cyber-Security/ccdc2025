@@ -2,8 +2,10 @@
 # This script will copy your public key and enforce PubkeyAuthentication by disabling password authentication 
 # and ensuring pubkeyauthentication is enabled
 
-# Instructions
-# Make sure the lookup path to your public key is correct.
+# Instructions: (specific configs to change)
+# - Make sure the lookup path to your public key is correct.
+# - Change the user 
+
 
 ---
 - name: Copy SSH keys
@@ -11,10 +13,10 @@
   become: true
 
   tasks:
-    - name: Copy SSH public key
+    - name: copy multiple ssh keys in from a single file
       authorized_key:
-        user: "alex"
-        key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+        user: <remote acc. name to run the asnible playbook from>
+        key: "{{ lookup('file', 'path/to/multiple/key/file') }}" # Change to the path of the file storing the multiple keys on your controller machine
         state: present
 
     - name: Disable PasswordAuthentication
@@ -36,3 +38,14 @@
       service:
         name: sshd
         state: restarted
+
+
+
+# About the multiple key file
+# Each key should be on a single seperate line
+# ```
+# ssh-rsa AAAAB3...key1... user1@example.com
+# ssh-ed25519 AAAAC3...key2... user2@example.com
+# ...
+# ssh-ed25519 AAAAG3...key3... user2@example.com
+# ```

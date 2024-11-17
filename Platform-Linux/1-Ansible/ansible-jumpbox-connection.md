@@ -5,9 +5,11 @@
 There are multiple methods. The method I will be describing will be a method using the inventory file.
 All commands will be in the inventory file on the ansible controller
 
+
 ## 1. Define a proxy/jumpbox host
 This belongs in the inventory file.
-An inventory file is a .ini that specifies the machines that ansible will connect to. You can specify machine groups as listed below(ex. "proxy", "machines"). You can also specify certain variables that relate to machine groups. In this case this varaible specifies how ssh will connect to the group "machines".
+An inventory file is a .ini that specifies the machines that ansible will connect to. You can specify machine groups as listed below(ex. "proxy", "machines"). You can also specify certain variables(commands) that relate to machine groups. In this case, these varaibles specifies how ssh will connect to the group "machines".
+
 ```ini
 [proxy]
 <ip of proxy> ansible_ssh_user=<username> ansible_ssh_private_key_file=<path/to/privkey>
