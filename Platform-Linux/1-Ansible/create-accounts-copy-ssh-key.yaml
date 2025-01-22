@@ -22,15 +22,20 @@
   hosts: all
   become: true
 
+  vars_prompt:
+    - name: blueteam_password
+      prompt: "Enter the password for blueteam user (will be hashed automatically)"
+      private: yes
+
   tasks:
-    - name: Create Black team user
+    - name: Create blue team user
       user:
-        name: blackteam
+        name: blueteam
         shell: /bin/bash
     - name: Copy SSH public key
       authorized_key:
-        user: "blackteam"
-        key: "{{ lookup('file', './blackteam.pub') }}"
+        user: "blueteam"
+        key: "{{ lookup('file', './blueteam.pub') }}"
         state: present
 
     - name: Ensure necessary groups exist
@@ -41,10 +46,10 @@
         - { group: 'wheel', when: "'Rocky' in group_names" }
         - { group: 'sudo', when: "'k8Cluster' in group_names or 'ubuntu' in group_names" }
 
-    - name: Set the password for blackteam user
+    - name: Set the password for blueteam user
       user:
-        name: blackteam
-        password: "$6$B2xS11R35JBlYNxP$qtjgfM0qSNAkHhty4reV81FZiuI8CUAQAnqzqm1MvRHotzg3eVXxjzfTRPEoor6NquozKrRanwNdR8RB4xF/g/"
+        name: blueteam
+        password: "{{ blueteam_password | password_hash('sha512') }}"
         groups: "{{ item.group }}"
       loop:
         - { group: 'wheel', when: "'Rocky' in group_names" }
