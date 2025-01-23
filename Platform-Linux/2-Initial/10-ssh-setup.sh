@@ -92,12 +92,12 @@ else
 fi
 
 ### May not want this if we are going to use SSH tunneling
-# echo "[+] Disabling TCP Forwarding"
-# if [ $(cat /etc/ssh/sshd_config | grep AllowTcpForwarding | wc -l) -eq 0 ]; then
-#     echo "AllowTcpForwarding no" >> /etc/ssh/sshd_config
-# else
-#     sed -i '/AllowTcpForwarding /c\AllowTcpForwarding no' /etc/ssh/sshd_config
-# fi
+echo "[+] Disabling TCP Forwarding"
+if [ $(cat /etc/ssh/sshd_config | grep AllowTcpForwarding | wc -l) -eq 0 ]; then
+    echo "AllowTcpForwarding no" >> /etc/ssh/sshd_config
+else
+    sed -i '/AllowTcpForwarding /c\AllowTcpForwarding no' /etc/ssh/sshd_config
+fi
 echo "[+] Configuring MaxStartups"
 if [ $(cat /etc/ssh/sshd_config | grep maxstartups | wc -l) -eq 0 ]; then
     echo "maxstartups 10:30:60" >> /etc/ssh/sshd_config

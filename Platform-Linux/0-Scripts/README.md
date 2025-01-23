@@ -220,15 +220,71 @@ This script configures a number of auditd rules to log various events on the sys
   * /bin/csh
   * /bin/ash
 ## Rsyslog
-
+Install and Setup rsyslog in addition to providing a basic configuration for *rsyslog*. Once installed it will be enabled, configure file creation mode to be `640`
 ## JournalD
-
+This script configures journald to forward logs to rsyslog, compress large files before forwarding them to rsyslog, and write the files to disk for persistence.
 ## SSH
+Provide basic and somewhat over the top SSH configurations.
+
+1. Configure to use Version 2 of SSH.
+2. Configure VERBOSE logging.
+3. Disable X11 Forwarding (**DANGER**).
+4. Set Max Auth Attempts to 4 (slow brute forcing).
+5. Ignore RHosts.
+6. Disable HostBased Authentication.
+7. Disable root login.
+8. Disable PermitUserEnvironment.
+9. Disallow the use of empty passwords.
+10. ClientAliveInterval set to 5 min. Allows disconnects for ~5 min.
+11. ClientAliveCountMax set to 0 (any failed is a disconnect).
+12. LoginGrace set to 1 min.
+13. Enable PAM
+14. Commented out DisableTCP Forwarding.
+15. Max Startups limit number of connections before randomly dropping unauthenticated connections.
+16. Max sessions limit number of active sessions per ssh connection (10 tmux, etc).
+17. Configure Ciphers, MAC and KEX algorithms (common best practices)
+
+## Accounts
+Creates accounts for each team member and a new group for them. `First Initial | Last Initial | bteam`, for example Jon Doe would be `jdbteam`.
+
+> [!IMPORTANT]
+> Edit file to add SSH keys. TEST YOUR CONNECTION.
+
+## Sudo
+Configures *sudo commands* to be executed in pty terminals stopping obscure exploits that fork off or hijack ssh tty terminals and to execute processes as root and persist when the original sudo command exists.
 
 ## Extras
-* **Firewall Reset**: Resets the firewall to a empty allow all state.
-* **Firewall Isolation**: Contains scripts to isolate the system on a network level.
-* **Gluster Backup**: Setup backups when Gluster is used.
-* **Gluster_Setup**: Download Gluster and Configure IPtables rules.
-* **remove-ldap**: Remove ldap from Linux system.
-* **Firewall Docker**: This sets up firewall rules to log packets sent to docker containers
+* **firewall-reset**: Resets the firewall to a empty allow all state.
+* **firewall-isolation**: Contains scripts to isolate the system on a network level.
+* **firewall-docker**: This sets up firewall rules to log packets sent to docker containers
+* **list-suid-binary**: Search system for SUID binaries. *Linpeas* will give better output but this is meant to be short and simple.
+* **list-users**: A quick script to list all sudo users and non-system users.
+* **query-users**: Iterate over all non system users with `bash` or `sh` set as their shell, ask user if we should delete, lock, or ignore the user.
+* **remove-ldap**: Uninstall LDAP.
+* **ssh-non-standard**: Configure SSH and Firewall for non-standard port.
+* **gluster-backup**: Setup backups when Gluster is used.
+* **gluster-setup**: Download Gluster and Configure IPtables rules.
+* **teleport-config**: Configure teleport in a quick and sane manner.
+* **Docker-Helper**: Contains scripts for basic Quality of Life Docker things
+  * **docker-install**: Old Docker engine install script.
+  * **firewall-docker**: Configure firewall to support *Docker SWARM*.
+  * **inspect-all-containers**: Inspect all containers save results to files (in directory command is run).
+    * running-containers.log
+    * Inspect-Outputs
+    * networks.log
+    * images.log
+    * all-containers-summaried.log
+  * **install-editors**: Install editor on Docker container (manual configurations and changes post up-time?).
+  * **post-install-script**: Create Docker group and add user to it.
+  * **shell**: Launch shell in given container id.
+* **EasyRSA-CA**: Easy RSA setup and use scripts
+  * **setup-ca-server**: Configure easyRSA
+  * **create-certificate**: Generate a certificate
+* **Firewall-Isolation**: Contains scripts for isolating a machine, and for clearing the isolation rules.
+  * **isolation**: Isolate the system.
+  * **clean-isolation**: Clear isolation rules.
+* **Gluster-Backup**: Deprecated scripts for creating backups of data handled by Gluster.
+* **Gluster-Setup**: Deprecated scripts for setting up Gluster.
+* **HealthChecks**: Scripts to be executed or ran to get a baseline of the system or generate logs for SIEM.
+  * **echo-core-service**: Echo results of core service checks to stdout.
+  * **log-coreservice**: Uses logger to write results of healthchecks to syslog. Maybe messages.
