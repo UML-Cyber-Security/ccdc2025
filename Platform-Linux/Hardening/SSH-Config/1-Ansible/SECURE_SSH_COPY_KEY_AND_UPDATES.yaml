@@ -1,0 +1,262 @@
+# Usage
+# This script will copy your public key and enforce PubkeyAuthentication by disabling password authentication 
+# and ensuring pubkeyauthentication is enabled
+
+# Instructions
+# Make sure the lookup path to your public key is correct.
+
+# For CCDC 2025, 
+# - this script's credit is given to Alex, was copied over to this repo(CCDC2025) by Chisom
+
+
+# Note: There is a cleaner, more streamlined version, that I've(chisom) uploaed to this repo(CCDC_2024)
+#Located here "Platform-Linux/Hardening/SSH-Config/1-Ansible/copy-ssh-key-enforce-pubkey.yaml"
+# This is a good refernce to cross check against likely malacilously modified ssh config files.
+
+---
+- name: Copy SSH keys and configure sshd_config
+  hosts: all
+  become: true
+
+  # Global vars, change here
+  vars:
+    current_user_name: "alex"
+    ssh_password_authentication: "no"
+    ssh_permit_empty_passwords: "no"
+    ssh_use_pam: "no"
+    ssh_permit_root_login: "no"
+    ssh_pubkey_authentication: "yes"
+    ssh_port: "22"
+    package_list_all:
+      - zsh
+      - git
+      - wget
+      - vim
+    specific_package_list_ubuntu:
+      - zsh
+    specific_package_list_centos:
+      - zsh
+    #manual_installations:
+
+  tasks:
+    - name: Copy SSH public key
+      authorized_key:
+        user: "blueteam" #Change the user to the machines base account
+        key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+        state: present
+      # Useful for fullying removing the ssh_config and starting anew.
+    - name: Remove all lines from sshd_config
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: absent
+        regexp: '.*'
+
+    - name: Configure sshd_config
+      blockinfile:
+        path: /etc/ssh/sshd_config
+        backup: yes
+        validate: /usr/sbin/sshd -T -f %s
+        block: |
+          # This is the sshd server system-wide configuration file.  See
+          # sshd_config(5) for more information.
+
+          # This sshd was compiled with PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+          # The strategy used for options in the default sshd_config shipped with
+          # OpenSSH is to specify options with their default value where
+          # possible, but leave them commented.  Uncommented options override the
+          # default value.
+
+          # Include /etc/ssh/sshd_config.d/*.conf
+
+          Port {{ ssh_port }}
+          #AddressFamily any
+          #ListenAddress 0.0.0.0
+          #ListenAddress ::
+
+          #HostKey /etc/ssh/ssh_host_rsa_key
+          #HostKey /etc/ssh/ssh_host_ecdsa_key
+          #HostKey /etc/ssh/ssh_host_ed25519_key
+
+          # Ciphers and keying
+          #RekeyLimit default none
+
+          # Logging
+          #SyslogFacility AUTH
+          #LogLevel INFO
+
+          # Authentication:
+
+          #LoginGraceTime 2m
+          PermitRootLogin {{ ssh_permit_root_login }}
+          #StrictModes yes
+          #MaxAuthTries 6
+          #MaxSessions 10
+
+          PubkeyAuthentication {{ ssh_pubkey_authentication }}
+
+          # Expect .ssh/authorized_keys2 to be disregarded by default in future.
+          AuthorizedKeysFile     .ssh/authorized_keys
+
+          #AuthorizedPrincipalsFile none
+
+          #AuthorizedKeysCommand none
+          #AuthorizedKeysCommandUser nobody
+
+          # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+          #HostbasedAuthentication no
+          # Change to yes if you don't trust ~/.ssh/known_hosts for
+          # HostbasedAuthentication
+          #IgnoreUserKnownHosts no
+          # Don't read the user's ~/.rhosts and ~/.shosts files
+          #IgnoreRhosts yes
+
+          # To disable tunneled clear text passwords, change to no here!
+          PasswordAuthentication {{ ssh_password_authentication }}
+          PermitEmptyPasswords {{ ssh_permit_empty_passwords }}
+
+          # Change to yes to enable challenge-response passwords (beware issues with
+          # some PAM modules and threads)
+          KbdInteractiveAuthentication no
+
+          # Kerberos options
+          #KerberosAuthentication no
+          #KerberosOrLocalPasswd yes
+          #KerberosTicketCleanup yes
+          #KerberosGetAFSToken no
+
+          # GSSAPI options
+          #GSSAPIAuthentication no
+          #GSSAPICleanupCredentials yes
+          #GSSAPIStrictAcceptorCheck yes
+          #GSSAPIKeyExchange no
+
+          # Set this to 'yes' to enable PAM authentication, account processing,
+          # and session processing. If this is enabled, PAM authentication will
+          # be allowed through the KbdInteractiveAuthentication and
+          # PAM authentication via KbdInteractiveAuthentication may bypass
+          # the setting of "PermitRootLogin without-password".
+          # If you just want the PAM account and session checks to run without
+          # and KbdInteractiveAuthentication to 'no'.
+          UsePAM {{ ssh_use_pam }}
+
+          #AllowAgentForwarding yes
+          #AllowTcpForwarding yes
+          #GatewayPorts no
+          X11Forwarding yes
+          #X11DisplayOffset 10
+          #X11UseLocalhost yes
+          #PermitTTY yes
+          PrintMotd no
+          #PrintLastLog yes
+          #TCPKeepAlive yes
+          #PermitUserEnvironment no
+          #Compression delayed
+          #ClientAliveInterval 0
+          #ClientAliveCountMax 3
+          #UseDNS no
+          #PidFile /run/sshd.pid
+          #MaxStartups 10:30:100
+          #PermitTunnel no
+          #ChrootDirectory none
+          #VersionAddendum none
+
+          # no default banner path
+          #Banner none
+
+          # Allow client to pass locale environment variables
+          AcceptEnv LANG LC_*
+
+          # override default of no subsystems
+          Subsystem       sftp    /usr/lib/openssh/sftp-server
+
+          # Example of overriding settings on a per-user basis
+          #Match User anoncvs
+          #       X11Forwarding no
+          #       AllowTcpForwarding no
+          #       PermitTTY no
+          #       ForceCommand cvs server
+
+      notify:
+        - Restart SSH
+
+    - name: Performing Initial Boot for Ubuntu 
+      include_tasks: ubuntu.yml
+      when: ansible_facts['distribution'] == 'Ubuntu'
+
+    - name: Performing Initial Boot for Centos 
+      include_tasks: centos.yml
+      when: ansible_facts['distribution'] == 'Centos'
+
+### SHELL SETUP (OHMYZSH)
+
+    # - name: Check if .zshrc exists
+    #   stat:
+    #     path: /home/{{ current_user_name | default(ansible_env.USER) }}/.zshrc
+    #   register: stat_rc_result
+
+    # - name: Check if .oh-my-zsh exists
+    #   stat:
+    #     path: /home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh
+    #   register: stat_oh_my_zsh_result
+
+    # - name: Check if zsh-autocomplete exists
+    #   stat:
+    #     path: /home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh/custom/plugins/zsh-autocomplete
+    #   register: stat_zsh_autocomplete_result
+
+    # - name: Check if zsh-spaceship exists
+    #   stat:
+    #     path: /home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh/themes/spaceship-prompt
+    #   register: stat_zsh_spaceship_prompt_result
+
+    # - name: Check if zsh-syntaxhighlighting exists
+    #   stat:
+    #     path: /home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    #   register: stat_zsh_syntaxhighlighting_result
+
+    # - name: Cloning oh-my-zsh
+    #   git:
+    #     repo=https://github.com/robbyrussell/oh-my-zsh
+    #     dest=/home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh
+    #   when: not stat_oh_my_zsh_result.stat.exists
+
+    # - name: Cloning zsh-autocomplete
+    #   command:
+    #     cmd: 'git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git "/home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh/custom/plugins/zsh-autocomplete"'
+    #   when: not stat_zsh_autocomplete_result.stat.exists
+
+    # - name: Cloning zsh-autocomplete
+    #   command:
+    #     cmd: 'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "/home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"'
+    #   when: not stat_zsh_syntaxhighlighting_result.stat.exists
+
+    # - name: Cloning spaceship prompt
+    #   command:
+    #     cmd: "{{ item  }}"
+    #   loop:
+    #     - 'git clone https://github.com/spaceship-prompt/spaceship-prompt.git "/home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh/themes/spaceship-prompt" --depth=1'
+    #     - 'ln -s "/home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme" "/home/{{ current_user_name | default(ansible_env.USER) }}/.oh-my-zsh/themes/spaceship.zsh-theme"'
+    #   when: not stat_zsh_spaceship_prompt_result.stat.exists
+
+    # - name: Creating new ~/.zshrc
+    #   copy:
+    #     src: ".zshrc"
+    #     dest: "/home/{{ current_user_name | default(ansible_env.USER) }}/.zshrc"
+    #   when: not stat_rc_result.stat.exists
+
+    # #- name: Setting zsh as new shell
+    # #  command:
+    # #    cmd: chsh -s "$(which zsh)"
+
+    # - name: Set login shell of user {{ current_user_name | default(ansible_env.USER) }} to `/bin/zsh` with `usermod`
+    #   command: 
+    #     cmd: usermod --shell /bin/zsh {{ current_user_name | default(ansible_env.USER) }}
+
+    #- name: Install Dependencies
+
+  handlers:
+    - name: Restart SSH
+      service:
+        name: sshd
+        state: restarted

@@ -1,0 +1,62 @@
+# Usage
+# This ansible playbook will create a user, copy over a given ssh key allowing pubkeyauthentication, 
+# ensure the user has escelated priviladges, and sets the password.
+
+
+# Instructions
+# run the below command to get the hash for the password you want to use (Requires whois package)
+# mkpasswd --method=sha-512
+
+# Paste above output into password field below
+# Change user to what you want
+# Change key to what you want
+# Can create key with ssh-keygen -t ed25519
+
+
+ #For CCDC 2025, 
+ # - this script's credit is given to Alex, was copied over to this repo(CCDC2025) by Chisom
+
+
+---
+- name: Copy SSH keys
+  hosts: all
+  become: true
+
+  vars_prompt:
+    - name: blueteam_password
+      prompt: "Enter the password for blueteam user (will be hashed automatically)"
+      private: yes
+
+  tasks:
+    - name: Create blue team user
+      user:
+        name: blueteam
+        shell: /bin/bash
+    - name: Copy SSH public key
+      authorized_key:
+        user: "blueteam"
+        key: "{{ lookup('file', './blueteam.pub') }}"
+        state: present
+
+    - name: Ensure necessary groups exist
+      group:
+        name: "{{ item.group }}"
+        state: present
+      loop:
+        - { group: 'wheel', when: "'Rocky' in group_names" }
+        - { group: 'sudo', when: "'k8Cluster' in group_names or 'ubuntu' in group_names" }
+
+    - name: Set the password for blueteam user
+      user:
+        name: blueteam
+        password: "{{ blueteam_password | password_hash('sha512') }}"
+        groups: "{{ item.group }}"
+      loop:
+        - { group: 'wheel', when: "'Rocky' in group_names" }
+        - { group: 'sudo', when: "'k8Cluster' in group_names or 'ubuntu' in group_names" }
+
+  handlers:
+    - name: Restart SSH
+      service:
+        name: sshd
+        state: restarted

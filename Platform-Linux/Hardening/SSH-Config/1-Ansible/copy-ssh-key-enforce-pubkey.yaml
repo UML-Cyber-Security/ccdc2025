@@ -1,0 +1,51 @@
+# Usage
+# This script will copy your public key and enforce PubkeyAuthentication by disabling password authentication 
+# and ensuring pubkeyauthentication is enabled
+
+# Instructions: (specific configs to change)
+# - Make sure the lookup path to your public key is correct.
+# - Change the user 
+
+
+---
+- name: Copy SSH keys
+  hosts: all
+  become: true
+
+  tasks:
+    - name: copy multiple ssh keys in from a single file
+      authorized_key:
+        user: <remote acc. name to run the ansible playbook from>
+        key: "{{ lookup('file', 'path/to/multiple/key/file') }}" # Change to the path of the file storing the multiple keys on your controller machine
+        state: present
+
+    - name: Disable PasswordAuthentication
+      replace:
+        path: /etc/ssh/sshd_config
+        regexp: '.*PasswordAuthentication.*'
+        replace: 'PasswordAuthentication no'
+
+    - name: Enforce PubkeyAuthentication 
+      replace:
+        path: /etc/ssh/sshd_config
+        regexp: '.*PubkeyAuthentication.*'
+        replace: 'PubkeyAuthentication yes'
+      notify:
+        - Restart SSH
+
+  handlers:
+    - name: Restart SSH
+      service:
+        name: sshd
+        state: restarted
+
+
+
+# About the multiple key file
+# Each key should be on a single seperate line
+# ```
+# ssh-rsa AAAAB3...key1... user1@example.com
+# ssh-ed25519 AAAAC3...key2... user2@example.com
+# ...
+# ssh-ed25519 AAAAG3...key3... user2@example.com
+# ```
