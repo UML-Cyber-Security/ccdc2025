@@ -11,7 +11,7 @@ to check versions of graylog with opensearch
 ```bash
 dpkg -l | grep -E ".(opensearch|graylog|mongo)."
 ```
-![!\[!\\[Alt text\\](<Screenshot 2025-01-24 at 1.51.30 PM.png>)\](<Images/Screenshot 2025-01-24 at 1.51.30 PM.png>)](<../Images/Screenshot 2025-01-24 at 1.51.30 PM.png>)
+![Alt text](<../Images/Screenshot 2025-01-24 at 1.51.30 PM.png>)
 example of what you should get when you run the command
 
 ### Next:
@@ -19,7 +19,7 @@ Run the [Graylog Upgrade](Graylog_upgrade.sh) Script.
 
 when it asks about the configuration file for Graylog and any service that invovles graylog say yes or y.
 
- ![!\[!\\[Asking about config\\](<Screenshot 2025-01-24 at 1.48.01 PM.png>)\](<Images/Screenshot 2025-01-24 at 1.48.01 PM.png>)](<../Images/Screenshot 2025-01-24 at 1.48.01 PM.png>)
+![Alt text](<../Images/Screenshot 2025-01-24 at 1.48.01 PM.png>)
  It should look something like this
 
 
