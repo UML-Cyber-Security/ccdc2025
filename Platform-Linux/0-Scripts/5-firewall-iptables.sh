@@ -361,14 +361,6 @@ ip6tables -A OUTPUT -p tcp --dport 80 -j ACCEPT
 ip6tables -A OUTPUT -p tcp --sport 443 -j ACCEPT
 ip6tables -A OUTPUT -p tcp --sport 80 -j ACCEPT
 
-###### Wahzuh
-## IPv4
-iptables -A OUTPUT -p tcp --sport 1514 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 1514 -j ACCEPT
-
-## IPv6
-ip6tables -A OUTPUT -p tcp --sport 1514 -j ACCEPT
-ip6tables -A OUTPUT -p tcp --dport 1514 -j ACCEPT
 
 ###### ICMP
 #### IPv4
@@ -441,15 +433,15 @@ ip6tables -A OUTPUT -p icmpv6 --icmpv6-type 153 -j ACCEPT
 
 # ----------------------------------------------- POLICIES  ------------------------------------------------------------------
 # Set defualt policy of All FILTER chains to DROP
-## IPv4
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-iptables -P OUTPUT DROP
+# ## IPv4
+# iptables -P INPUT DROP
+# iptables -P FORWARD DROP
+# iptables -P OUTPUT DROP
 
-##IPv6
-ip6tables -P INPUT DROP
-ip6tables -P OUTPUT DROP
-ip6tables -P FORWARD DROP
+# ##IPv6
+# ip6tables -P INPUT DROP
+# ip6tables -P OUTPUT DROP
+# ip6tables -P FORWARD DROP
 
 # ----------------------------------------------------------------------------------------------------------------------------
 
