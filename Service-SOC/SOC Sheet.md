@@ -10,9 +10,12 @@
 - ```sudo adduser <username>```
 - ```sudo usermod -aG <group> <user>```
 - ```source ~/.bashrc``` .bashrc reload
+
+### Antivirus ###
 - ```sudo debsums <arg> <arg>``` -a (all + configs), -e (config only), -s (only report error)
 - ```sudo freshclam``` update clamAV scans
 - ```sudo clamscan -r -i/ &``` background scan displaying bad file
+- ```./linpeas.sh | tee linpeas_output.txt``` Linpeas
 
 ### Graylog Passes ###
 - ```< /dev/urandom tr -dc A-Z-a-z-0-9 | head -c${1:-96};echo;``` secret gen.
@@ -36,14 +39,13 @@
 ### GRAYLOG PORTS USED (default) ###
 ```yaml
 :443 and/or :80
-:9000
+:9000 - dashboard + API
 :9515
 :514
 :1514
 :4739
 :5044 - beats input
 :5555
-:9515
 :27017
 
 with docker also uses?(these are for log inputs):
@@ -96,10 +98,13 @@ sudo yum remove wazuh-agent
       <certificate>/etc/filebeat/certs/wazuh-server.pem</certificate>
       <key>/etc/filebeat/certs/wazuh-server-key.pem</key>
 ```
+
 ### SSH TUNNEL ###
 ```bash
 ssh -L [local_port]:[remote_host]:[remote_port] [user]@[ssh_server]
+ssh -L 80:localhost:9000 blueteam@192.168.2.250
 ```
+Going to localhost:80 on your machine will open 192.168.2.250:9000
 
 ### DOCKER EXEC ###
 ```bash
