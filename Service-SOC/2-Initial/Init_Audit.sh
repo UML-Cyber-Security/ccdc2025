@@ -1,6 +1,6 @@
 #!/bin/bash
 # Linux Audit Script
-# RIT with UML edits
+# UML and RIT edits
 # Must be run as superuser #
 
 if [ "$EUID" -ne 0 ]; then

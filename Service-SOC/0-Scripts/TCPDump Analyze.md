@@ -1,4 +1,4 @@
-## Bad TCP Dump Output Searching ##
+## TCP Dump Output Parsing/Analyze ##
 
 ### Running the TCP-Dump for your Subnet ###
 ```bash
