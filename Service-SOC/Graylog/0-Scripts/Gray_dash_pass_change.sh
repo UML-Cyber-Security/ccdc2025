@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script should change the dashboard password for Graylog
 
-read -p "Do you want to generate a new password secret? (generating a password secret will disable all active TOKENS!) (y/n): " generate_secret
+read -p "Do you want to generate a new password secret? (generating a password secret will disable all active TOKENS) (y/n): " generate_secret
 
 if [[ "$generate_secret" == "y" ]]; then
     password_secret=$(< /dev/urandom tr -dc A-Z-a-z-0-9 | head -c${1:-96};echo;)
