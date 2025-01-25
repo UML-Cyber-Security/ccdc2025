@@ -1,0 +1,6 @@
+[!] SERVICE /etc/systemd/system/snap.lxd.daemon.service [!]
+/usr/bin/snap run lxd.daemon
+[!] SERVICE /etc/systemd/system/snap.lxd.user-daemon.service [!]
+/usr/bin/snap run lxd.user-daemon
+[!] SERVICE /etc/systemd/system/snap.lxd.activate.service [!]
+/usr/bin/snap run lxd.activate

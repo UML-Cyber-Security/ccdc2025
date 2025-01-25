@@ -1,0 +1,225 @@
+[!] ps [!]
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           2  0.0  0.0      0     0 ?        S    Aug01   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [slub_flushwq]
+root           6  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [netns]
+root           8  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kworker/0:0H-events_highpri]
+root          10  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [mm_percpu_wq]
+root          11  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [rcu_tasks_trace]
+root          12  0.0  0.0      0     0 ?        S    Aug01   0:01  \_ [ksoftirqd/0]
+root          13  0.0  0.0      0     0 ?        I    Aug01   4:19  \_ [rcu_sched]
+root          14  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [migration/0]
+root          15  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [cpuhp/0]
+root          16  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [cpuhp/1]
+root          17  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [migration/1]
+root          18  0.0  0.0      0     0 ?        S    Aug01   0:01  \_ [ksoftirqd/1]
+root          20  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kworker/1:0H-events_highpri]
+root          21  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [kdevtmpfs]
+root          22  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [inet_frag_wq]
+root          23  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [kauditd]
+root          25  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [oom_reaper]
+root          26  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [writeback]
+root          49  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kblockd]
+root          50  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [blkcg_punt_bio]
+root          51  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [tpm_dev_wq]
+root          52  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [ata_sff]
+root          54  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kworker/0:1H-kblockd]
+root          55  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [kswapd0]
+root          57  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kthrotld]
+root          58  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [nfit]
+root          59  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [iscsi_eh]
+root          60  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [iscsi_conn_clea]
+root          61  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [scsi_eh_0]
+root          62  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [scsi_tmf_0]
+root          63  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [mld]
+root          64  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kworker/1:1H-kblockd]
+root          65  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [ipv6_addrconf]
+root          66  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kstrp]
+root          69  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kworker/u5:0]
+root          70  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [jbd2/vda1-8]
+root          71  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [ext4-rsv-conver]
+root         162  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kmpathd]
+root         163  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [kmpath_handlerd]
+root         198  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [scsi_eh_1]
+root         199  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [scsi_tmf_1]
+root         201  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [scsi_eh_2]
+root         203  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [scsi_tmf_2]
+root         205  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [scsi_eh_3]
+root         206  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [scsi_tmf_3]
+root         207  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [scsi_eh_4]
+root         208  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [scsi_tmf_4]
+root         209  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [scsi_eh_5]
+root         210  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [scsi_tmf_5]
+root         211  0.0  0.0      0     0 ?        S    Aug01   0:00  \_ [scsi_eh_6]
+root         212  0.0  0.0      0     0 ?        I<   Aug01   0:00  \_ [scsi_tmf_6]
+root       68697  0.0  0.0      0     0 ?        I<   Aug03   0:00  \_ [dio/vda1]
+root       68742  0.0  0.0      0     0 ?        S<   Aug03   0:00  \_ [spl_system_task]
+root       68743  0.0  0.0      0     0 ?        S<   Aug03   0:00  \_ [spl_delay_taskq]
+root       68744  0.0  0.0      0     0 ?        S<   Aug03   0:00  \_ [spl_dynamic_tas]
+root       68745  0.0  0.0      0     0 ?        S<   Aug03   0:00  \_ [spl_kmem_cache]
+root       68746  0.0  0.0      0     0 ?        S<   Aug03   0:00  \_ [zvol]
+root       68747  0.0  0.0      0     0 ?        S    Aug03   0:00  \_ [arc_prune]
+root       68748  0.0  0.0      0     0 ?        S    Aug03   0:00  \_ [arc_evict]
+root       68749  0.0  0.0      0     0 ?        SN   Aug03   0:06  \_ [arc_reap]
+root       68750  0.0  0.0      0     0 ?        S    Aug03   0:00  \_ [dbu_evict]
+root       68751  0.0  0.0      0     0 ?        SN   Aug03   0:06  \_ [dbuf_evict]
+root       68752  0.0  0.0      0     0 ?        SN   Aug03   0:00  \_ [z_vdev_file]
+root       68753  0.0  0.0      0     0 ?        S    Aug03   0:04  \_ [l2arc_feed]
+root      367587  0.0  0.0      0     0 ?        I    16:05   0:00  \_ [kworker/1:2-events]
+root      426328  0.0  0.0      0     0 ?        I    17:05   0:00  \_ [kworker/0:2-cgwb_release]
+root      429137  0.0  0.0      0     0 ?        I    19:17   0:00  \_ [kworker/u4:2-flush-254:0]
+root      429266  0.0  0.0      0     0 ?        I    19:37   0:00  \_ [kworker/u4:1-events_unbound]
+root      433312  0.0  0.0      0     0 ?        I    20:03   0:00  \_ [kworker/1:3]
+root      433564  0.0  0.0      0     0 ?        I    20:05   0:00  \_ [kworker/0:1-events]
+root      433671  0.0  0.0      0     0 ?        I    20:13   0:00  \_ [kworker/u4:0-flush-254:0]
+root           1  0.0  0.6 167460 13000 ?        Ss   Aug01   0:11 /sbin/init
+root         109  0.0  1.1  72936 23156 ?        S<s  Aug01   0:04 /lib/systemd/systemd-journald
+root         164  0.0  1.3 289312 27096 ?        SLsl Aug01   0:38 /sbin/multipathd -d -s
+root         168  0.0  0.2  11616  5120 ?        Ss   Aug01   0:00 /lib/systemd/systemd-udevd
+systemd+     269  0.0  0.3  89364  6520 ?        Ssl  Aug01   0:00 /lib/systemd/systemd-timesyncd
+systemd+     336  0.0  0.4  16128  7924 ?        Ss   Aug01   0:00 /lib/systemd/systemd-networkd
+systemd+     338  0.0  0.6  25740 12640 ?        Ss   Aug01   0:01 /lib/systemd/systemd-resolved
+root         444  0.0  0.1   7288  2824 ?        Ss   Aug01   0:01 /usr/sbin/cron -f -P
+message+     445  0.0  0.2   8912  5116 ?        Ss   Aug01   0:01 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         450  0.0  0.2  82796  3916 ?        Ssl  Aug01   0:14 /usr/sbin/irqbalance --foreground
+root         453  0.0  0.9  33088 18692 ?        Ss   Aug01   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+syslog       455  0.0  0.2 222404  5688 ?        Ssl  Aug01   0:00 /usr/sbin/rsyslogd -n -iNONE
+root         458  0.0  0.3  15756  7556 ?        Ss   Aug01   0:01 /lib/systemd/systemd-logind
+root         471  0.0  0.1  11268  3504 ttyS0    Ss   Aug01   0:00 /bin/login -p --
+user        1857  0.0  0.2   9088  4208 ttyS0    S    Aug01   0:00  \_ -bash
+root        1944  0.0  0.2  11892  4412 ttyS0    S+   Aug01   0:00      \_ sudo su
+root        1945  0.0  0.0  11892   892 pts/0    Ss   Aug01   0:00          \_ sudo su
+root        1946  0.0  0.1  10612  3008 pts/0    S    Aug01   0:00              \_ su
+root        1947  0.0  0.1   8028  3092 pts/0    S    Aug01   0:00                  \_ bash
+root        1956  0.0  0.1  10612  2632 pts/0    S    Aug01   0:00                      \_ su blueteam
+blueteam    1957  0.0  0.2   9172  4244 pts/0    S    Aug01   0:00                          \_ bash
+blueteam    9954  0.0  0.2  10860  4228 pts/0    S+   Aug02   0:00                              \_ systemctl status ssh
+blueteam    9955  0.0  0.1   6576  2472 pts/0    S+   Aug02   0:00                                  \_ less
+root         495  0.0  1.1 110104 21404 ?        Ssl  Aug01   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root        1417  0.0  0.9 296004 19204 ?        Ssl  Aug01   0:02 /usr/libexec/packagekitd
+root        1421  0.0  0.3 234504  6732 ?        Ssl  Aug01   0:00 /usr/libexec/polkitd --no-debug
+root        1759  0.0  0.2  80204  4376 ?        Ssl  Aug01   0:26 /usr/sbin/qemu-ga
+user        1848  0.0  0.4  16984  9300 ?        Ss   Aug01   0:00 /lib/systemd/systemd --user
+user        1849  0.0  0.2 104676  4728 ?        S    Aug01   0:00  \_ (sd-pam)
+root        3195  0.0  0.4  15436  8488 ?        Ss   Aug02   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root      367284  0.0  0.5  16928 10804 ?        Ss   15:59   0:00  \_ sshd: blueteam [priv]
+blueteam  367363  0.0  0.4  18272  9284 ?        S    15:59   0:00  |   \_ sshd: blueteam@pts/1
+blueteam  367365  0.0  0.2   9404  5420 pts/1    Ss+  15:59   0:00  |       \_ -bash
+root      434003  0.1  0.5  16920 10796 ?        Ss   20:17   0:00  \_ sshd: blueteam [priv]
+blueteam  434059  0.4  0.4  18032  8932 ?        S    20:17   0:00      \_ sshd: blueteam@pts/2
+blueteam  434151  0.0  0.0   2892   992 pts/2    Ss+  20:17   0:00          \_ /bin/sh -c sudo -H -S -p "[sudo via ansible, key=kirfghdxmvgixkiboesusscykvnoojmc] password:" -u root /bin/sh -c 'echo BECOME-SUCCESS-kirfghdxmvgixkiboesusscykvnoojmc ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py' && sleep 0
+root      434152  3.0  0.2  12064  5644 pts/2    S+   20:17   0:00              \_ sudo -H -S -p [sudo via ansible, key=kirfghdxmvgixkiboesusscykvnoojmc] password: -u root /bin/sh -c echo BECOME-SUCCESS-kirfghdxmvgixkiboesusscykvnoojmc ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py
+root      434153  0.0  0.0  12064   944 pts/3    Ss   20:17   0:00                  \_ sudo -H -S -p [sudo via ansible, key=kirfghdxmvgixkiboesusscykvnoojmc] password: -u root /bin/sh -c echo BECOME-SUCCESS-kirfghdxmvgixkiboesusscykvnoojmc ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py
+root      434154  0.0  0.0   2892  1012 pts/3    S+   20:17   0:00                      \_ /bin/sh -c echo BECOME-SUCCESS-kirfghdxmvgixkiboesusscykvnoojmc ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py
+root      434155 11.0  1.2  35456 23824 pts/3    S+   20:17   0:00                          \_ /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py
+root      434156  0.0  0.0   2892   976 pts/3    S+   20:17   0:00                              \_ /bin/sh -c echo "[!] ps [!]" ps -auxfww echo "[!] pstree [!]" pstree -plas 
+root      434157  0.0  0.1  11068  3872 pts/3    R+   20:17   0:00                                  \_ ps -auxfww
+root        4019  0.0  1.6 1394208 31896 ?       Ssl  Aug02   0:20 /usr/lib/snapd/snapd
+blueteam   23682  0.0  0.5  17124  9780 ?        Ss   Aug03   0:00 /lib/systemd/systemd --user
+blueteam   23683  0.0  0.2 170244  4844 ?        S    Aug03   0:00  \_ (sd-pam)
+blueteam   28239  0.0  0.2   8300  3980 ?        Ss   Aug03   0:00  \_ /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+blueteam   32497  0.0  0.1  81816  3320 ?        SLs  Aug03   0:00  \_ /usr/bin/gpg-agent --supervised
+blueteam   51273  0.0  0.7  97456 14204 ?        Ss   Aug03   0:00  \_ /usr/bin/dirmngr --supervised --honor-http-proxy
+uuidd      51392  0.0  0.0   9632  1504 ?        Ss   Aug03   0:00 /usr/sbin/uuidd --socket-activation
+root       68493  0.0  0.0   2628   416 ?        Ss   Aug03   0:00 /bin/sh /snap/lxd/29351/commands/daemon.start
+root       68656  0.0  3.2 2062108 62468 ?       Sl   Aug03   0:54  \_ lxd --logfile /var/snap/lxd/common/lxd/logs/lxd.log --group lxd
+root       68644  0.0  0.0 153032   688 ?        Sl   Aug03   0:00 lxcfs /var/snap/lxd/common/var/lib/lxcfs -p /var/snap/lxd/common/lxcfs.pid
+root       71756  0.0  0.0  81816   828 ?        Ss   Aug03   0:00 gpg-agent --homedir /root/.gnupg --use-standard-socket --daemon
+[!] pstree [!]
+systemd,1
+  |-cron,444 -f -P
+  |-daemon.start,68493 /snap/lxd/29351/commands/daemon.start
+  |   `-lxd,68656 --logfile /var/snap/lxd/common/lxd/logs/lxd.log --group lxd
+  |       |-{lxd},68666
+  |       |-{lxd},68667
+  |       |-{lxd},68670
+  |       |-{lxd},68672
+  |       |-{lxd},68674
+  |       |-{lxd},68677
+  |       |-{lxd},68678
+  |       |-{lxd},68698
+  |       |-{lxd},68699
+  |       |-{lxd},68700
+  |       |-{lxd},68701
+  |       |-{lxd},68702
+  |       |-{lxd},68754
+  |       `-{lxd},109032
+  |-dbus-daemon,445 --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+  |-gpg-agent,71756 --homedir /root/.gnupg --use-standard-socket --daemon
+  |-irqbalance,450 --foreground
+  |   `-{irqbalance},462
+  |-login,471 -p --
+  |   `-bash,1857
+  |       `-sudo,1944 su
+  |           `-sudo,1945 su
+  |               `-su,1946
+  |                   `-bash,1947
+  |                       `-su,1956 blueteam
+  |                           `-bash,1957
+  |                               `-systemctl,9954 status ssh
+  |                                   `-less,9955
+  |-lxcfs,68644 /var/snap/lxd/common/var/lib/lxcfs -p /var/snap/lxd/common/lxcfs.pid
+  |   |-{lxcfs},68646
+  |   `-{lxcfs},68647
+  |-multipathd,164 -d -s
+  |   |-{multipathd},169
+  |   |-{multipathd},170
+  |   |-{multipathd},171
+  |   |-{multipathd},172
+  |   |-{multipathd},173
+  |   `-{multipathd},174
+  |-networkd-dispat,453 /usr/bin/networkd-dispatcher --run-startup-triggers
+  |-packagekitd,1417
+  |   |-{packagekitd},1418
+  |   `-{packagekitd},1419
+  |-polkitd,1421 --no-debug
+  |   |-{polkitd},1422
+  |   `-{polkitd},1424
+  |-qemu-ga,1759
+  |   `-{qemu-ga},1760
+  |-rsyslogd,455 -n -iNONE
+  |   |-{rsyslogd},486
+  |   |-{rsyslogd},487
+  |   `-{rsyslogd},488
+  |-snapd,4019
+  |   |-{snapd},4020
+  |   |-{snapd},4021
+  |   |-{snapd},4022
+  |   |-{snapd},4023
+  |   |-{snapd},4024
+  |   |-{snapd},4027
+  |   |-{snapd},4073
+  |   |-{snapd},4102
+  |   `-{snapd},4308
+  |-sshd,3195
+  |   |-sshd,367284
+  |   |   `-sshd,367363
+  |   |       `-bash,367365
+  |   `-sshd,434003
+  |       `-sshd,434059
+  |           `-sh,434151 -c sudo -H -S -p "[sudo via ansible, key=kirfghdxmvgixkiboesusscykvnoojmc] password:" -u root /bin/sh -c 'echo BECOME-SUCCESS-kirfghdxmvgixkiboesusscykvnoojmc ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py' && sleep 0
+  |               `-sudo,434152 -H -S -p [sudo via ansible, key=kirfghdxmvgixkiboesusscykvnoojmc] password: -u root /bin/sh -c echo BECOME-SUCCESS-kirfghdxmvgixkiboesusscykvnoojmc ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py
+  |                   `-sudo,434153 -H -S -p [sudo via ansible, key=kirfghdxmvgixkiboesusscykvnoojmc] password: -u root /bin/sh -c echo BECOME-SUCCESS-kirfghdxmvgixkiboesusscykvnoojmc ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py
+  |                       `-sh,434154 -c echo BECOME-SUCCESS-kirfghdxmvgixkiboesusscykvnoojmc ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py
+  |                           `-python3,434155 /home/blueteam/.ansible/tmp/ansible-tmp-1723061840.4461462-48402-261922503076732/AnsiballZ_command.py
+  |                               `-sh,434156 -c echo "[!] ps [!]"\012ps -auxfww\012echo "[!] pstree [!]"\012pstree -plas\012
+  |                                   `-pstree,434158 -plas
+  |-systemd,1848 --user
+  |   `-(sd-pam),1849
+  |-systemd,23682 --user
+  |   |-(sd-pam),23683
+  |   |-dbus-daemon,28239 --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+  |   |-dirmngr,51273 --supervised --honor-http-proxy
+  |   `-gpg-agent,32497 --supervised
+  |-systemd-journal,109
+  |-systemd-logind,458
+  |-systemd-network,336
+  |-systemd-resolve,338
+  |-systemd-timesyn,269
+  |   `-{systemd-timesyn},274
+  |-systemd-udevd,168
+  |-unattended-upgr,495 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+  |   `-{unattended-upgr},521
+  `-uuidd,51392 --socket-activation

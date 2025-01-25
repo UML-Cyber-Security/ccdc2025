@@ -1,0 +1,24 @@
+[!] Processes Currently Listening for Connections (ss) [!]
+Total: 214
+TCP:   5 (estab 2, closed 0, orphaned 0, timewait 0)
+
+Transport Total     IP        IPv6
+RAW	  1         0         1        
+UDP	  2         2         0        
+TCP	  5         4         1        
+INET	  8         6         2        
+FRAG	  0         0         0        
+
+Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                   
+raw   UNCONN 0      0                  *:58              *:*    users:(("systemd-network",pid=336,fd=20))
+udp   UNCONN 0      0         127.0.0.53:53        0.0.0.0:*    users:(("systemd-resolve",pid=338,fd=13))
+udp   UNCONN 0      0       192.168.0.60:68        0.0.0.0:*    users:(("systemd-network",pid=336,fd=15))
+tcp   LISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=338,fd=14))
+tcp   LISTEN 0      128          0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=3195,fd=3))           
+tcp   LISTEN 0      128             [::]:22           [::]:*    users:(("sshd",pid=3195,fd=4))           
+
+[!] Processes Currently Listening for Connections (lsof - TCP) [!]
+COMMAND    PID            USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+systemd-r  338 systemd-resolve   14u  IPv4   8097      0t0  TCP localhost:domain (LISTEN)
+sshd      3195            root    3u  IPv4  24689      0t0  TCP *:ssh (LISTEN)
+sshd      3195            root    4u  IPv6  24691      0t0  TCP *:ssh (LISTEN)

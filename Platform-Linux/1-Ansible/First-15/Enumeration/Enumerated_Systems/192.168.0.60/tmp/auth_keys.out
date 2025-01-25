@@ -1,0 +1,26 @@
+-[!] AUTHORIZED KEY FILES [!]
+#AuthorizedKeysFile	.ssh/authorized_keys .ssh/authorized_keys2
+
+[!] USER AUTHORIZED KEYS [!]
+==> /home/blueteam/.ssh/authorized_keys <==
+ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBMZkNIE7cQaIRX75pLcAN7Et8Umz+B/PqNlKcz2eEfgra13i8V3yoR35JwFHpluIGxAtbVrB8lz/R1MMXlGEXrqmZ0VuauleGa5YQvbbi3MutWzxgHb2QkwOxcqfbGM/yA== Cyber-Range Key
+
+==> /home/blueteam/.ssh/authorized_keys.bak <==
+ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBMZkNIE7cQaIRX75pLcAN7Et8Umz+B/PqNlKcz2eEfgra13i8V3yoR35JwFHpluIGxAtbVrB8lz/R1MMXlGEXrqmZ0VuauleGa5YQvbbi3MutWzxgHb2QkwOxcqfbGM/yA== Cyber-Range Key
+
+==> /home/blueteam2/.ssh/authorized_keys <==
+
+==> /home/blueteam2/.ssh/authorized_keys.bak <==
+INSERT KEYS HERE :)
+==> /home/ubuntu/.ssh/authorized_keys <==
+
+==> /home/ubuntu/.ssh/authorized_keys.bak <==
+
+==> /home/user/.ssh/authorized_keys <==
+
+==> /home/user/.ssh/authorized_keys.bak <==
+
+[!] ROOT AUTHORIZED KEYS [!]
+==> /root/.ssh/authorized_keys <==
+
+==> /root/.ssh/authorized_keys.bak <==
