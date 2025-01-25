@@ -1,0 +1,15 @@
+-[!] Currently Logged in Users (w) [!]
+ 17:03:53 up 5 days, 17:37,  5 users,  load average: 0.08, 0.04, 0.01
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+user     ttyS0    -                Thu23    5days  0.17s  0.07s -bash
+user     pts/0    -                Thu23    4days  0.02s  0.05s sudo su
+blueteam pts/1    192.168.7.10     15:59    2:37   0.08s  0.08s -bash
+blueteam pts/2    192.168.7.10     17:03    0.00s  0.03s  0.00s /bin/sh -c sudo -H -S -p "[sudo via ansible, key=gfynzbjtslisulbmcknywjrkjftqgtan] password:" -u root /bin/sh -c 'echo BECOME-SUCCESS-gfynzbjtslisulbmcknywjrkjftqgtan ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723050232.4722102-23583-155995713194585/AnsiballZ_command.py' && sleep 0
+blueteam pts/3    192.168.7.10     17:03    0.00s  0.10s  0.03s sudo -H -S -p [sudo via ansible, key=gfynzbjtslisulbmcknywjrkjftqgtan] password: -u root /bin/sh -c echo BECOME-SUCCESS-gfynzbjtslisulbmcknywjrkjftqgtan ; /usr/bin/python3 /home/blueteam/.ansible/tmp/ansible-tmp-1723050232.4722102-23583-155995713194585/AnsiballZ_command.py
+
+[!] Currently Logged in Users (who) [!]
+user     ttyS0        2024-08-01 23:29
+user     pts/0        2024-08-01 23:49
+blueteam pts/1        2024-08-07 15:59 (192.168.7.10)
+blueteam pts/2        2024-08-07 17:03 (192.168.7.10)
+blueteam pts/3        2024-08-07 17:03 (192.168.7.10)

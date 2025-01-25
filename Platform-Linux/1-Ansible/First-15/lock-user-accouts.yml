@@ -1,0 +1,48 @@
+##
+# This playbook backs up the /etc/passwd and /etc/shadow files
+##
+
+---
+- name: Lock-User-Accounts
+  hosts: inventory # Need to Coordinate This
+  become: true # Need to be sudo
+  vars:
+    managing_user: blueteam # This is the user we will make the owner of the backups
+    whitelist:
+      - blackteam
+      - blueteam
+      - insertansibleuser
+  tasks:
+    - name: Backup-passwd-File
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/passwd
+        dest: /etc/passwd_lock.bak
+        owner: root
+        group: root
+        mode: u=rw,g=r,o=r
+
+    - name: Backup-shadow-File
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/shadow
+        dest: /etc/shadow_lock.bak
+        owner: root
+        group: root
+        mode: u=rw,g=r
+
+    - name: Find all directories in /home
+      ansible.builtin.command: "ls /home/"
+      register: home_dirs
+
+    - name: debug-output
+      debug:
+        var: home_dirs.stdout_lines
+
+        #TODO: probably good to instead to have all non-whitelisted users shell be /sbin/nologin instead of lock
+    - name: lock-users
+      ansible.builtin.user:
+        name: "{{ item }}"
+        password_lock: true
+      loop: "{{ home_dirs.stdout_lines }}"
+      when: item not in whitelist

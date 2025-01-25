@@ -1,0 +1,12 @@
+-[!] listing Users in Group sudo [!]
+user
+ubuntu
+blueteam
+blueteam2
+-[!] listing Users in Group wheel [!]
+-[!] listing Users in Group docker [!]
+-[!] listing Users in Group root [!]
+-[!] listing Users in Group shadow [!]
+-[!] listing Users in Group adm [!]
+syslog
+ubuntu

@@ -1,0 +1,21 @@
+-[!] Processes Currently Established/Establishing Connections (ss) [!]
+Total: 214
+TCP:   5 (estab 2, closed 0, orphaned 0, timewait 0)
+
+Transport Total     IP        IPv6
+RAW	  1         0         1        
+UDP	  2         2         0        
+TCP	  5         4         1        
+INET	  8         6         2        
+FRAG	  0         0         0        
+
+Netid State Recv-Q Send-Q Local Address:Port Peer Address:Port Process                                                   
+tcp   ESTAB 0      0       192.168.0.60:22   192.168.7.10:50522 users:(("sshd",pid=367363,fd=4),("sshd",pid=367284,fd=4))
+tcp   ESTAB 0      0       192.168.0.60:22   192.168.7.10:38776 users:(("sshd",pid=428297,fd=4),("sshd",pid=428241,fd=4))
+
+[!] Processes Currently Established/Establishing Connections (lsof - TCP) [!]
+COMMAND    PID     USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+sshd    367284     root    4u  IPv4 1092518      0t0  TCP mharper-ansible-trgt:ssh->192.168.7.10:50522 (ESTABLISHED)
+sshd    367363 blueteam    4u  IPv4 1092518      0t0  TCP mharper-ansible-trgt:ssh->192.168.7.10:50522 (ESTABLISHED)
+sshd    428241     root    4u  IPv4 1319125      0t0  TCP mharper-ansible-trgt:ssh->192.168.7.10:38776 (ESTABLISHED)
+sshd    428297 blueteam    4u  IPv4 1319125      0t0  TCP mharper-ansible-trgt:ssh->192.168.7.10:38776 (ESTABLISHED)
