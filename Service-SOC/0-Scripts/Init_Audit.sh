@@ -95,6 +95,8 @@ basic(){
     $s cat /etc/sudoers | grep !AUTH
     $s find / -type f \( -name ".rhosts" -o -name ".shosts" -o -name "hosts.equiv" \) -exec ls -l {} \;
     cat /etc/sudoers | grep -i secure_path=
+    echo -e "\nsudoers file includes: (check these!)"
+    ls /etc/sudoers.d/
     sleep $t
 
     echo -e "\n-------------------------\n > Currently Logged In <\n------------------------- "
