@@ -1,3 +1,22 @@
+
+What is said organizations main targets?
+
+Is there any threat of any state affliated threats attacking healthcare system.
+
+what type of actors are most likey to attack the healthcare system?
+
+what would the danger be of healthcare data being leaked?" 
+
+Why or why not would said organizations target healthcare systems?
+
+What are the potenially impacts of attacks on healthcare systems?
+
+Tactics Techniques and Procedures (TTP)?
+
+Any previous attacks that have been before? 
+
+Do they affect us?
+
 Organizational Goals and Threat Landscape
 	1.	How does PlaceboPharma’s reliance on third-party vendors make it more susceptible to cybersecurity threats?
 	2.	What potential geopolitical factors could make PlaceboPharma a target for state-sponsored cyberattacks?
